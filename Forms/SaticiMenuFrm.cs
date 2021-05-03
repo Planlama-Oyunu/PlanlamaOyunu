@@ -20,10 +20,11 @@ namespace PlanlamaOyunu.Forms
         }
         SaticiSorgulari saticiSorgulari = new SaticiSorgulari();
         List<Urun> urnlr = new List<Urun>();
+        List<SatinAlim> sprslr = new List<SatinAlim>();
 
         private void SaticiMenuFrm_Load(object sender, EventArgs e)
         {
-            dtGrdViewYeniUrun.ColumnCount = 5;
+            /*dtGrdViewYeniUrun.ColumnCount = 5;
             dtGrdViewYeniUrun.Columns[0].Name = "Ürün ID";
             dtGrdViewYeniUrun.Columns[1].Name = "Ürün adı";
             dtGrdViewYeniUrun.Columns[2].Name = "Ürün KG";
@@ -35,13 +36,15 @@ namespace PlanlamaOyunu.Forms
             dtGrdViewUrunlerim.Columns[1].Name = "Ürün adı";
             dtGrdViewUrunlerim.Columns[2].Name = "Ürün KG";
             dtGrdViewUrunlerim.Columns[3].Name = "Ürün Kg Fiyatı(TL)";
-            dtGrdViewUrunlerim.Columns[4].Name = "Ürün Onayı";
+            dtGrdViewUrunlerim.Columns[4].Name = "Ürün Onayı";*/
 
             urnlr = saticiSorgulari.urunlerim();
             dataGridViewUrunListele(urnlr, dtGrdViewYeniUrun);
             urnlr.Clear();
             urnlr = saticiSorgulari.onayliUrunlerim();
             dataGridViewUrunListele(urnlr, dtGrdViewUrunlerim);
+            sprslr = saticiSorgulari.siparisler();
+            dataGridViewSiparisListele(sprslr, dtGrdViewSiparisler);
         }
 
         public void dataGridViewUrunListele(List<Urun> urnlr, DataGridView dgv)
@@ -55,6 +58,20 @@ namespace PlanlamaOyunu.Forms
                 dgv.Rows[i].Cells[2].Value = urnlr[i].urunKg;
                 dgv.Rows[i].Cells[3].Value = urnlr[i].urunFiyati;
                 dgv.Rows[i].Cells[4].Value = urnlr[i].urunOnay;
+            }
+        }
+        public void dataGridViewSiparisListele(List<SatinAlim> sprslr, DataGridView dgv)
+        {
+            dgv.Rows.Clear();
+            for (int i = 0; i < sprslr.Count; i++)
+            {
+                dgv.Rows.Add();
+                dgv.Rows[i].Cells[0].Value = sprslr[i].satinAlimID;
+                dgv.Rows[i].Cells[1].Value = sprslr[i].aliciAdi;
+                dgv.Rows[i].Cells[2].Value = sprslr[i].islemTarihi;
+                dgv.Rows[i].Cells[3].Value = sprslr[i].islemDetay;
+                dgv.Rows[i].Cells[4].Value = sprslr[i].islemTutari;
+                dgv.Rows[i].Cells[5].Value = sprslr[i].urunBirimFiyati;
             }
         }
 

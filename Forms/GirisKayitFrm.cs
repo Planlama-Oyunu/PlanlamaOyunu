@@ -27,11 +27,11 @@ namespace PlanlamaOyunu
             {
                 try
                 {
-                    Kullanici kllnc = new Kullanici();
-                    kllnc = grsKytFrmQrys.girisKontrol(txtBoxGirisKullaniciAdi.Text.Trim(), txtBoxGirisSifre.Text.Trim());//login servise gönderilen kullanıcı adı ve şifresine sahip kullanıcı var mı diye veritabanında sorgu yaptırıyoruz
-                    if (kllnc != null)//sorgudan bir sonuç çıkarsa yani kllnc nın içinde yetki degeri doluysa if e giriyor
+                    string yetki;
+                    yetki = grsKytFrmQrys.girisKontrol(txtBoxGirisKullaniciAdi.Text.Trim(), txtBoxGirisSifre.Text.Trim());//login servise gönderilen kullanıcı adı ve şifresine sahip kullanıcı var mı diye veritabanında sorgu yaptırıyoruz
+                    if (yetki != null)//sorgudan bir sonuç çıkarsa yani kllnc nın içinde yetki degeri doluysa if e giriyor
                     {
-                        if (kllnc.yetki == "ALICI")
+                        if (yetki == "ALICI")
                         {
                             this.Hide();
                             Forms.AliciMenuFrm aliciMenuFrm = new Forms.AliciMenuFrm();
@@ -39,7 +39,7 @@ namespace PlanlamaOyunu
                             aliciMenuFrm.Closed += (s, args) => this.Close();
                             aliciMenuFrm.Show();
                         }
-                        else if (kllnc.yetki == "SATICI")
+                        else if (yetki == "SATICI")
                         {
                             this.Hide();
                             Forms.SaticiMenuFrm saticiMenuFrm = new Forms.SaticiMenuFrm();
@@ -47,7 +47,7 @@ namespace PlanlamaOyunu
                             saticiMenuFrm.Closed += (s, args) => this.Close();
                             saticiMenuFrm.Show();
                         }
-                        else
+                        else if (yetki == "ADMİN")
                         {
                             this.Hide();
                             Forms.AdminMenuFrm adminMenuFrm = new Forms.AdminMenuFrm();

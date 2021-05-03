@@ -31,8 +31,12 @@ namespace PlanlamaOyunu.Forms
         {
             this.tabCntrlAliciFrm = new System.Windows.Forms.TabControl();
             this.tabPageUrunAlim = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
+            this.dtGrdViewUrunler = new System.Windows.Forms.DataGridView();
+            this.urunID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.urunAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.urunKg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.urunBirimFiyat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mvctBakiye1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -42,28 +46,38 @@ namespace PlanlamaOyunu.Forms
             this.label5 = new System.Windows.Forms.Label();
             this.tabPageParaEkleme = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtGrdViewBakiyeOnay = new System.Windows.Forms.DataGridView();
+            this.talepID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.talepTarihi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.talepMiktari = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnParaEkle = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txt_ekleBakiye = new System.Windows.Forms.TextBox();
+            this.mvctBakiye = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.tabPageGecmisIslemler = new System.Windows.Forms.TabPage();
+            this.dtGrdViewGecmisSiparisler = new System.Windows.Forms.DataGridView();
+            this.siparisId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saticiAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.islemTarihi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.islemDetay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.islemTutari = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alicininKalanParasi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.urunBirimFiyati = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCntrlAliciFrm.SuspendLayout();
             this.tabPageUrunAlim.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewUrunler)).BeginInit();
             this.tabPageParaEkleme.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewBakiyeOnay)).BeginInit();
+            this.tabPageGecmisIslemler.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewGecmisSiparisler)).BeginInit();
             this.SuspendLayout();
             // 
             // tabCntrlAliciFrm
             // 
             this.tabCntrlAliciFrm.Controls.Add(this.tabPageUrunAlim);
             this.tabCntrlAliciFrm.Controls.Add(this.tabPageParaEkleme);
-            this.tabCntrlAliciFrm.Controls.Add(this.tabPage1);
+            this.tabCntrlAliciFrm.Controls.Add(this.tabPageGecmisIslemler);
             this.tabCntrlAliciFrm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabCntrlAliciFrm.Location = new System.Drawing.Point(0, 0);
             this.tabCntrlAliciFrm.Name = "tabCntrlAliciFrm";
@@ -74,8 +88,8 @@ namespace PlanlamaOyunu.Forms
             // tabPageUrunAlim
             // 
             this.tabPageUrunAlim.AutoScroll = true;
-            this.tabPageUrunAlim.Controls.Add(this.dataGridView2);
-            this.tabPageUrunAlim.Controls.Add(this.label10);
+            this.tabPageUrunAlim.Controls.Add(this.dtGrdViewUrunler);
+            this.tabPageUrunAlim.Controls.Add(this.mvctBakiye1);
             this.tabPageUrunAlim.Controls.Add(this.label9);
             this.tabPageUrunAlim.Controls.Add(this.label8);
             this.tabPageUrunAlim.Controls.Add(this.label7);
@@ -91,24 +105,56 @@ namespace PlanlamaOyunu.Forms
             this.tabPageUrunAlim.Text = "Ürün Satın Alma";
             this.tabPageUrunAlim.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // dtGrdViewUrunler
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(11, 34);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(771, 384);
-            this.dataGridView2.TabIndex = 9;
+            this.dtGrdViewUrunler.AllowUserToAddRows = false;
+            this.dtGrdViewUrunler.AllowUserToDeleteRows = false;
+            this.dtGrdViewUrunler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGrdViewUrunler.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.urunID,
+            this.urunAdi,
+            this.urunKg,
+            this.urunBirimFiyat});
+            this.dtGrdViewUrunler.Location = new System.Drawing.Point(11, 34);
+            this.dtGrdViewUrunler.Name = "dtGrdViewUrunler";
+            this.dtGrdViewUrunler.ReadOnly = true;
+            this.dtGrdViewUrunler.Size = new System.Drawing.Size(771, 384);
+            this.dtGrdViewUrunler.TabIndex = 9;
             // 
-            // label10
+            // urunID
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(1061, 3);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(15, 16);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "0";
+            this.urunID.HeaderText = "Ürün ID";
+            this.urunID.Name = "urunID";
+            this.urunID.ReadOnly = true;
+            // 
+            // urunAdi
+            // 
+            this.urunAdi.HeaderText = "Ürün Adı";
+            this.urunAdi.Name = "urunAdi";
+            this.urunAdi.ReadOnly = true;
+            // 
+            // urunKg
+            // 
+            this.urunKg.HeaderText = "Ürün Kg";
+            this.urunKg.Name = "urunKg";
+            this.urunKg.ReadOnly = true;
+            // 
+            // urunBirimFiyat
+            // 
+            this.urunBirimFiyat.HeaderText = "Ürün Kg Fiyatı (TL)";
+            this.urunBirimFiyat.Name = "urunBirimFiyat";
+            this.urunBirimFiyat.ReadOnly = true;
+            // 
+            // mvctBakiye1
+            // 
+            this.mvctBakiye1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mvctBakiye1.AutoSize = true;
+            this.mvctBakiye1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.mvctBakiye1.Location = new System.Drawing.Point(1061, 3);
+            this.mvctBakiye1.Name = "mvctBakiye1";
+            this.mvctBakiye1.Size = new System.Drawing.Size(15, 16);
+            this.mvctBakiye1.TabIndex = 8;
+            this.mvctBakiye1.Text = "0";
             // 
             // label9
             // 
@@ -172,6 +218,7 @@ namespace PlanlamaOyunu.Forms
             this.button1.TabIndex = 2;
             this.button1.Text = "Satın Al";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -186,11 +233,11 @@ namespace PlanlamaOyunu.Forms
             // tabPageParaEkleme
             // 
             this.tabPageParaEkleme.Controls.Add(this.label4);
-            this.tabPageParaEkleme.Controls.Add(this.dataGridView1);
+            this.tabPageParaEkleme.Controls.Add(this.dtGrdViewBakiyeOnay);
             this.tabPageParaEkleme.Controls.Add(this.btnParaEkle);
             this.tabPageParaEkleme.Controls.Add(this.label3);
-            this.tabPageParaEkleme.Controls.Add(this.textBox1);
-            this.tabPageParaEkleme.Controls.Add(this.label2);
+            this.tabPageParaEkleme.Controls.Add(this.txt_ekleBakiye);
+            this.tabPageParaEkleme.Controls.Add(this.mvctBakiye);
             this.tabPageParaEkleme.Controls.Add(this.label1);
             this.tabPageParaEkleme.Location = new System.Drawing.Point(4, 22);
             this.tabPageParaEkleme.Name = "tabPageParaEkleme";
@@ -210,13 +257,38 @@ namespace PlanlamaOyunu.Forms
             this.label4.TabIndex = 6;
             this.label4.Text = "Beklenen Para Talepleri:";
             // 
-            // dataGridView1
+            // dtGrdViewBakiyeOnay
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(76, 148);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(675, 268);
-            this.dataGridView1.TabIndex = 5;
+            this.dtGrdViewBakiyeOnay.AllowUserToAddRows = false;
+            this.dtGrdViewBakiyeOnay.AllowUserToDeleteRows = false;
+            this.dtGrdViewBakiyeOnay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGrdViewBakiyeOnay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.talepID,
+            this.talepTarihi,
+            this.talepMiktari});
+            this.dtGrdViewBakiyeOnay.Location = new System.Drawing.Point(76, 148);
+            this.dtGrdViewBakiyeOnay.Name = "dtGrdViewBakiyeOnay";
+            this.dtGrdViewBakiyeOnay.ReadOnly = true;
+            this.dtGrdViewBakiyeOnay.Size = new System.Drawing.Size(675, 268);
+            this.dtGrdViewBakiyeOnay.TabIndex = 5;
+            // 
+            // talepID
+            // 
+            this.talepID.HeaderText = "Talep ID";
+            this.talepID.Name = "talepID";
+            this.talepID.ReadOnly = true;
+            // 
+            // talepTarihi
+            // 
+            this.talepTarihi.HeaderText = "Talep Tarihi";
+            this.talepTarihi.Name = "talepTarihi";
+            this.talepTarihi.ReadOnly = true;
+            // 
+            // talepMiktari
+            // 
+            this.talepMiktari.HeaderText = "Talep Miktarı";
+            this.talepMiktari.Name = "talepMiktari";
+            this.talepMiktari.ReadOnly = true;
             // 
             // btnParaEkle
             // 
@@ -226,6 +298,7 @@ namespace PlanlamaOyunu.Forms
             this.btnParaEkle.TabIndex = 4;
             this.btnParaEkle.Text = "Ekle";
             this.btnParaEkle.UseVisualStyleBackColor = true;
+            this.btnParaEkle.Click += new System.EventHandler(this.btnParaEkle_Click);
             // 
             // label3
             // 
@@ -237,21 +310,21 @@ namespace PlanlamaOyunu.Forms
             this.label3.TabIndex = 3;
             this.label3.Text = "Eklenecek Tutar:";
             // 
-            // textBox1
+            // txt_ekleBakiye
             // 
-            this.textBox1.Location = new System.Drawing.Point(243, 89);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.txt_ekleBakiye.Location = new System.Drawing.Point(243, 89);
+            this.txt_ekleBakiye.Name = "txt_ekleBakiye";
+            this.txt_ekleBakiye.Size = new System.Drawing.Size(100, 20);
+            this.txt_ekleBakiye.TabIndex = 2;
             // 
-            // label2
+            // mvctBakiye
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(240, 63);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "0";
+            this.mvctBakiye.AutoSize = true;
+            this.mvctBakiye.Location = new System.Drawing.Point(240, 63);
+            this.mvctBakiye.Name = "mvctBakiye";
+            this.mvctBakiye.Size = new System.Drawing.Size(13, 13);
+            this.mvctBakiye.TabIndex = 1;
+            this.mvctBakiye.Text = "0";
             // 
             // label1
             // 
@@ -263,25 +336,81 @@ namespace PlanlamaOyunu.Forms
             this.label1.TabIndex = 0;
             this.label1.Text = "Mevcut Bakiyeniz(TL):";
             // 
-            // tabPage1
+            // tabPageGecmisIslemler
             // 
-            this.tabPage1.Controls.Add(this.dataGridView3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1084, 424);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Geçmiş İşlemler";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPageGecmisIslemler.Controls.Add(this.dtGrdViewGecmisSiparisler);
+            this.tabPageGecmisIslemler.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGecmisIslemler.Name = "tabPageGecmisIslemler";
+            this.tabPageGecmisIslemler.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGecmisIslemler.Size = new System.Drawing.Size(1084, 424);
+            this.tabPageGecmisIslemler.TabIndex = 2;
+            this.tabPageGecmisIslemler.Text = "Geçmiş Siparişlerim";
+            this.tabPageGecmisIslemler.UseVisualStyleBackColor = true;
             // 
-            // dataGridView3
+            // dtGrdViewGecmisSiparisler
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView3.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(1078, 418);
-            this.dataGridView3.TabIndex = 0;
+            this.dtGrdViewGecmisSiparisler.AllowUserToAddRows = false;
+            this.dtGrdViewGecmisSiparisler.AllowUserToDeleteRows = false;
+            this.dtGrdViewGecmisSiparisler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGrdViewGecmisSiparisler.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.siparisId,
+            this.saticiAdi,
+            this.islemTarihi,
+            this.islemDetay,
+            this.islemTutari,
+            this.alicininKalanParasi,
+            this.urunBirimFiyati});
+            this.dtGrdViewGecmisSiparisler.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtGrdViewGecmisSiparisler.Location = new System.Drawing.Point(3, 3);
+            this.dtGrdViewGecmisSiparisler.MultiSelect = false;
+            this.dtGrdViewGecmisSiparisler.Name = "dtGrdViewGecmisSiparisler";
+            this.dtGrdViewGecmisSiparisler.ReadOnly = true;
+            this.dtGrdViewGecmisSiparisler.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGrdViewGecmisSiparisler.Size = new System.Drawing.Size(1078, 418);
+            this.dtGrdViewGecmisSiparisler.TabIndex = 0;
+            // 
+            // siparisId
+            // 
+            this.siparisId.HeaderText = "Sipariş ID";
+            this.siparisId.Name = "siparisId";
+            this.siparisId.ReadOnly = true;
+            // 
+            // saticiAdi
+            // 
+            this.saticiAdi.HeaderText = "Satıcı adı";
+            this.saticiAdi.Name = "saticiAdi";
+            this.saticiAdi.ReadOnly = true;
+            // 
+            // islemTarihi
+            // 
+            this.islemTarihi.HeaderText = "İşlem tarihi";
+            this.islemTarihi.Name = "islemTarihi";
+            this.islemTarihi.ReadOnly = true;
+            // 
+            // islemDetay
+            // 
+            this.islemDetay.HeaderText = "Detay";
+            this.islemDetay.Name = "islemDetay";
+            this.islemDetay.ReadOnly = true;
+            // 
+            // islemTutari
+            // 
+            this.islemTutari.HeaderText = "İşlem tutarı";
+            this.islemTutari.Name = "islemTutari";
+            this.islemTutari.ReadOnly = true;
+            // 
+            // alicininKalanParasi
+            // 
+            this.alicininKalanParasi.HeaderText = "Kalan para";
+            this.alicininKalanParasi.Name = "alicininKalanParasi";
+            this.alicininKalanParasi.ReadOnly = true;
+            // 
+            // urunBirimFiyati
+            // 
+            this.urunBirimFiyati.HeaderText = "Ürün kg fiyatı (TL)";
+            this.urunBirimFiyati.Name = "urunBirimFiyati";
+            this.urunBirimFiyati.ReadOnly = true;
+            this.urunBirimFiyati.Width = 120;
             // 
             // AliciMenuFrm
             // 
@@ -295,12 +424,12 @@ namespace PlanlamaOyunu.Forms
             this.tabCntrlAliciFrm.ResumeLayout(false);
             this.tabPageUrunAlim.ResumeLayout(false);
             this.tabPageUrunAlim.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewUrunler)).EndInit();
             this.tabPageParaEkleme.ResumeLayout(false);
             this.tabPageParaEkleme.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewBakiyeOnay)).EndInit();
+            this.tabPageGecmisIslemler.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewGecmisSiparisler)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -311,12 +440,12 @@ namespace PlanlamaOyunu.Forms
         private System.Windows.Forms.TabPage tabPageUrunAlim;
         private System.Windows.Forms.TabPage tabPageParaEkleme;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label mvctBakiye;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_ekleBakiye;
         private System.Windows.Forms.Button btnParaEkle;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtGrdViewBakiyeOnay;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
@@ -324,9 +453,23 @@ namespace PlanlamaOyunu.Forms
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label mvctBakiye1;
+        private System.Windows.Forms.TabPage tabPageGecmisIslemler;
+        private System.Windows.Forms.DataGridView dtGrdViewGecmisSiparisler;
+        private System.Windows.Forms.DataGridView dtGrdViewUrunler;
+        private System.Windows.Forms.DataGridViewTextBoxColumn siparisId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn saticiAdi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn islemTarihi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn islemDetay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn islemTutari;
+        private System.Windows.Forms.DataGridViewTextBoxColumn alicininKalanParasi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn urunBirimFiyati;
+        private System.Windows.Forms.DataGridViewTextBoxColumn urunID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn urunAdi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn urunKg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn urunBirimFiyat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn talepID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn talepTarihi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn talepMiktari;
     }
 }

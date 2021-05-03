@@ -9,42 +9,25 @@ using System.Windows.Forms;
 
 namespace PlanlamaOyunu.SqlQuerys
 {
-    public class SaticiSorgulari
+    public class AliciSorgulari
     {
         public static string connectionSource = Properties.Settings.Default.SqlString;
         SqlConnection baglanti = new SqlConnection(connectionSource);
-
-        public void YeniUrunSatici(string urunİsmi, int urunKilosu, double kgFiyati)
-        {
-            baglanti.Open();
-            SqlCommand komut = new SqlCommand("INSERT tblUrun (kullaniciID,urunAdi,urunKg,urunFiyati,urunOnay) VALUES " + " (@kullaniciID,@urunAdi, @urunKg, @urunFiyati, 0)", baglanti);
-            komut.Parameters.AddWithValue("@urunAdi", urunİsmi);
-            komut.Parameters.AddWithValue("@urunKg", urunKilosu);
-            komut.Parameters.AddWithValue("@urunFiyati", kgFiyati);
-            komut.Parameters.AddWithValue("@kullaniciID", Properties.Settings.Default.kullaniciID);
-            komut.ExecuteNonQuery();
-            baglanti.Close();
-            MessageBox.Show("Kayıt Başarıyla Oluşturulmuştur.");
-        }
-
-        public List<Urun> urunlerim()
+        public List<Urun> urunler()
         {
             List<Urun> urnlr = new List<Urun>();
             try
             {
                 baglanti.Open();//veritabanı ile olan bağlantıyı açıyor
-                SqlCommand komut = new SqlCommand("Select * from tblUrun Where kullaniciID = @kullaniciId", baglanti);//sorgumuz
-                komut.Parameters.AddWithValue("kullaniciId", Properties.Settings.Default.kullaniciID);
+                SqlCommand komut = new SqlCommand("Select * from tblUrun where urunOnay = 1", baglanti);//sorgumuz
                 SqlDataReader read = komut.ExecuteReader();//sorgudan dönen değerleri okuyor
                 while (read.Read())
                 {
                     Urun urn = new Urun();
                     urn.urunID = Convert.ToInt32(read["urunID"]);
-                    urn.kullaniciID = Convert.ToInt32(read["kullaniciID"]);
                     urn.urunAdi = read["urunAdi"].ToString();
                     urn.urunKg = Convert.ToDouble(read["urunKg"]);
                     urn.urunFiyati = Convert.ToDouble(read["urunFiyati"]);
-                    urn.urunOnay = Convert.ToBoolean(read["urunOnay"]);
                     urnlr.Add(urn);
                 }
                 baglanti.Close();
@@ -55,30 +38,30 @@ namespace PlanlamaOyunu.SqlQuerys
                 MessageBox.Show("Hata: " + ex.ToString(), "UYARI!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
+
         }
 
-        public List<Urun> onayliUrunlerim()
+        public List<Talep> bakiyeTalepleri()
         {
-            List<Urun> urnlr = new List<Urun>();
+            List<Talep> bkytlplr = new List<Talep>();
             try
             {
                 baglanti.Open();//veritabanı ile olan bağlantıyı açıyor
-                SqlCommand komut = new SqlCommand("Select * from tblUrun Where kullaniciID = @kullaniciId and urunOnay = 1", baglanti);//sorgumuz
+                SqlCommand komut = new SqlCommand("SELECT T.*,K.kullaniciAdi FROM tblKullanici K INNER JOIN" +
+                    " tblTalep T ON T.kullaniciID = K.kullaniciID AND T.kullaniciID = @kullaniciId", baglanti);//sorgumuz
                 komut.Parameters.AddWithValue("kullaniciId", Properties.Settings.Default.kullaniciID);
                 SqlDataReader read = komut.ExecuteReader();//sorgudan dönen değerleri okuyor
+
                 while (read.Read())
                 {
-                    Urun urn = new Urun();
-                    urn.urunID = Convert.ToInt32(read["urunID"]);
-                    urn.kullaniciID = Convert.ToInt32(read["kullaniciID"]);
-                    urn.urunAdi = read["urunAdi"].ToString();
-                    urn.urunKg = Convert.ToDouble(read["urunKg"]);
-                    urn.urunFiyati = Convert.ToDouble(read["urunFiyati"]);
-                    urn.urunOnay = Convert.ToBoolean(read["urunOnay"]);
-                    urnlr.Add(urn);
+                    Talep bkytlp = new Talep();
+                    bkytlp.talepId = Convert.ToInt32(read["talepId"]);
+                    bkytlp.talepTarihi = read["talepTarihi"].ToString();
+                    bkytlp.talepMiktari = Convert.ToDouble(read["talepMiktari"]);
+                    bkytlplr.Add(bkytlp);
                 }
                 baglanti.Close();
-                return urnlr;
+                return bkytlplr;
             }
             catch (System.Exception ex)
             {
@@ -86,15 +69,56 @@ namespace PlanlamaOyunu.SqlQuerys
                 throw;
             }
         }
-        public List<SatinAlim> siparisler()
+
+        public string bakiyeSorgulama()
+        {
+            try
+            {
+                baglanti.Open();//veritabanı ile olan bağlantıyı açıyor
+                SqlCommand komut = new SqlCommand("Select * From tblKullanici Where kullaniciID = @kullaniciId ", baglanti);//sorgumuz
+                komut.Parameters.AddWithValue("kullaniciId", Properties.Settings.Default.kullaniciID);
+                SqlDataReader read = komut.ExecuteReader();//sorgudan dönen değerleri okuyor
+                read.Read();
+                string bky = Convert.ToString(read["bakiye"]);
+                baglanti.Close();
+                return bky;
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString(), "UYARI!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            
+        }
+
+        public void bakiyeTalep(double yeniBakiye)
+        {
+            try
+            {
+                baglanti.Open();
+                SqlCommand komut = new SqlCommand("INSERT tblTalep (kullaniciID,talepMiktari,talepTarihi) VALUES " + "(@kullaniciId,@talepMiktari,GETDATE())", baglanti);
+                komut.Parameters.AddWithValue("@talepMiktari", yeniBakiye);
+                komut.Parameters.AddWithValue("@kullaniciId", Properties.Settings.Default.kullaniciID);
+                komut.ExecuteNonQuery();
+                baglanti.Close();
+                MessageBox.Show("Kayıt Başarıyla Oluşturulmuştur.");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString(), "UYARI!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            
+        }
+        public List<SatinAlim> gecmisSiparisler()
         {
             List<SatinAlim> sprslr = new List<SatinAlim>();
             try
             {
                 baglanti.Open();//veritabanı ile olan bağlantıyı açıyor
                 SqlCommand komut = new SqlCommand("SELECT S.*,K.kullaniciAdi FROM tblSatinAlim S INNER JOIN" +
-                    " tblKullanici K ON S.aliciID = K.kullaniciID and saticiID = @saticiId", baglanti);//sorgumuz
-                komut.Parameters.AddWithValue("saticiId", Properties.Settings.Default.kullaniciID);
+                    " tblKullanici K ON S.saticiID = K.kullaniciID and aliciID = @aliciId", baglanti);//sorgumuz
+                komut.Parameters.AddWithValue("aliciId", Properties.Settings.Default.kullaniciID);
                 SqlDataReader read = komut.ExecuteReader();//sorgudan dönen değerleri okuyor
                 while (read.Read())
                 {
@@ -103,9 +127,9 @@ namespace PlanlamaOyunu.SqlQuerys
                     sprs.islemTarihi = read["islemTarihi"].ToString();
                     sprs.islemDetay = read["islemDetay"].ToString();
                     sprs.islemTutari = Convert.ToDouble(read["islemTutari"]);
-                    sprs.islemDetay = read["islemDetay"].ToString();
+                    sprs.alicininKalanParasi= Convert.ToDouble(read["alicininKalanParasi"]);
                     sprs.urunBirimFiyati = Convert.ToDouble(read["urunBirimFiyati"]);
-                    sprs.aliciAdi = read["kullaniciAdi"].ToString();
+                    sprs.saticiAdi = read["kullaniciAdi"].ToString();
                     sprslr.Add(sprs);
                 }
                 baglanti.Close();

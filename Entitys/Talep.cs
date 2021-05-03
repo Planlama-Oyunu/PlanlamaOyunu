@@ -10,6 +10,7 @@ namespace PlanlamaOyunu.Entitys
     {
         public int talepId { get; set; }
         public int kullaniciId { get; set; }
+        public string talepTarihi { get; set; }
         public string kullaniciAdi { get; set; }
         public double talepMiktari { get; set; }
     }

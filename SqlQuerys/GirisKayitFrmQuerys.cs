@@ -16,9 +16,9 @@ namespace PlanlamaOyunu.SqlQuerys
         /*
          * GİRİŞ SORGULARI
          */
-        public Kullanici girisKontrol(string kullaniciAdi, string sifre)
+        public string girisKontrol(string kullaniciAdi, string sifre)
         {
-            Kullanici kllnc = new Kullanici();//kullanıcı nesnesi oluşturuyoruz
+            string yetki = null;
             try
             {
                 baglanti.Open();//veritabanı ile olan bağlantıyı açıyor
@@ -29,10 +29,10 @@ namespace PlanlamaOyunu.SqlQuerys
                 while (read.Read())//eğer gönderdiğimiz kullanıcı adı ve sifresine sahip birisi var ise kllnc nesnesinin yetkisini dolduruyor. yoksa kllnc null kalıyor
                 {
                     Properties.Settings.Default.kullaniciID = Convert.ToInt32(read["kullaniciID"]);//kullanıcıID yi diğer ekranlarda kullanmak için properties kısmına kaydettim
-                    kllnc.yetki = read["yetki"].ToString();
+                    yetki = read["yetki"].ToString();
                 }
                 baglanti.Close();
-                return kllnc;//kllnc nesnesini ilk çağırdığımız yere döndürüyor
+                return yetki;//kllnc nesnesini ilk çağırdığımız yere döndürüyor
             }
             catch (System.Exception ex)
             {
