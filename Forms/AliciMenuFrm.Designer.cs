@@ -204,7 +204,7 @@ namespace PlanlamaOyunu.Forms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(73, 185);
+            this.label4.Location = new System.Drawing.Point(73, 129);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(167, 16);
             this.label4.TabIndex = 6;
@@ -213,9 +213,9 @@ namespace PlanlamaOyunu.Forms
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(76, 204);
+            this.dataGridView1.Location = new System.Drawing.Point(76, 148);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(675, 212);
+            this.dataGridView1.Size = new System.Drawing.Size(675, 268);
             this.dataGridView1.TabIndex = 5;
             // 
             // btnParaEkle

@@ -25,7 +25,7 @@ namespace PlanlamaOyunu.SqlQuerys
             try
             {
                 baglanti.Open();//veritabanı ile olan bağlantıyı açıyor
-                SqlCommand komut = new SqlCommand("getUrunByUrunOnay", baglanti);//sorgumuz
+                SqlCommand komut = new SqlCommand("getUrunByUrunOnay", baglanti);//sorgumuz 
                 komut.CommandType = CommandType.StoredProcedure;
                 komut.Parameters.AddWithValue("onayDurumu", onay);
                 SqlDataReader read = komut.ExecuteReader();//sorgudan dönen değerleri okuyor
