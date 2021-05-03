@@ -119,6 +119,7 @@ namespace PlanlamaOyunu.Forms
             // 
             // cmbBoxUrunIsmi
             // 
+            this.cmbBoxUrunIsmi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxUrunIsmi.FormattingEnabled = true;
             this.cmbBoxUrunIsmi.Items.AddRange(new object[] {
             "Buğday",
@@ -142,7 +143,7 @@ namespace PlanlamaOyunu.Forms
             this.btnUrunEkle.TabIndex = 7;
             this.btnUrunEkle.Text = "Ürün Talebi Oluştur";
             this.btnUrunEkle.UseVisualStyleBackColor = true;
-            this.btnUrunEkle.Click += new System.EventHandler(this.btnUrunEkle_Click);
+            this.btnUrunEkle.Click += new System.EventHandler(this.btnUrunTalep_Click);
             // 
             // dtGrdViewYeniUrun
             // 

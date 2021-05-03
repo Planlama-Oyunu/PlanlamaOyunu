@@ -26,7 +26,7 @@ namespace PlanlamaOyunu.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.8,1433;Initial Catalog=Planlama;Persist Security Info=True;" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.3,1433;Initial Catalog=Planlama;Persist Security Info=True;" +
             "User ID=sa;Password=123emre123")]
         public string SqlString {
             get {

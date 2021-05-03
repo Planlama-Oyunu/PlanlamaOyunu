@@ -38,45 +38,29 @@ namespace PlanlamaOyunu.Forms
             dtGrdViewUrunlerim.Columns[4].Name = "Ürün Onayı";
 
             urnlr = saticiSorgulari.urunlerim();
-            dataGridViewYeniUrunListele(urnlr);
+            dataGridViewUrunListele(urnlr, dtGrdViewYeniUrun);
             urnlr.Clear();
             urnlr = saticiSorgulari.onayliUrunlerim();
-            dataGridViewUrunlerimListele(urnlr);
+            dataGridViewUrunListele(urnlr, dtGrdViewUrunlerim);
         }
 
-        public void dataGridViewYeniUrunListele(List<Urun> urnlr)
+        public void dataGridViewUrunListele(List<Urun> urnlr, DataGridView dgv)
         {
-            dtGrdViewYeniUrun.Rows.Clear();
+            dgv.Rows.Clear();
             for (int i = 0; i < urnlr.Count; i++)
             {
-                dtGrdViewYeniUrun.Rows.Add();
-                dtGrdViewYeniUrun.Rows[i].Cells[0].Value = urnlr[i].urunID;
-                dtGrdViewYeniUrun.Rows[i].Cells[1].Value = urnlr[i].urunAdi;
-                dtGrdViewYeniUrun.Rows[i].Cells[2].Value = urnlr[i].urunKg;
-                dtGrdViewYeniUrun.Rows[i].Cells[3].Value = urnlr[i].urunFiyati;
-                dtGrdViewYeniUrun.Rows[i].Cells[4].Value = urnlr[i].urunOnay;
+                dgv.Rows.Add();
+                dgv.Rows[i].Cells[0].Value = urnlr[i].urunID;
+                dgv.Rows[i].Cells[1].Value = urnlr[i].urunAdi;
+                dgv.Rows[i].Cells[2].Value = urnlr[i].urunKg;
+                dgv.Rows[i].Cells[3].Value = urnlr[i].urunFiyati;
+                dgv.Rows[i].Cells[4].Value = urnlr[i].urunOnay;
             }
         }
 
-        public void dataGridViewUrunlerimListele(List<Urun> urnlr)
+        private void btnUrunTalep_Click(object sender, EventArgs e)
         {
-            dtGrdViewUrunlerim.Rows.Clear();
-            for (int i = 0; i < urnlr.Count; i++)
-            {
-                dtGrdViewUrunlerim.Rows.Add();
-                dtGrdViewUrunlerim.Rows[i].Cells[0].Value = urnlr[i].urunID;
-                dtGrdViewUrunlerim.Rows[i].Cells[1].Value = urnlr[i].urunAdi;
-                dtGrdViewUrunlerim.Rows[i].Cells[2].Value = urnlr[i].urunKg;
-                dtGrdViewUrunlerim.Rows[i].Cells[3].Value = urnlr[i].urunFiyati;
-                dtGrdViewUrunlerim.Rows[i].Cells[4].Value = urnlr[i].urunOnay;
-            }
-        }
-
-
-
-        private void btnUrunEkle_Click(object sender, EventArgs e)
-        {
-            if (cmbBoxUrunIsmi.Text == "")
+            if (cmbBoxUrunIsmi.Text == "" || txtBoxUrunKgFiyat.Text.Trim() == "" || txtBoxUrunKilo.Text.Trim() == "")
             {
                 MessageBox.Show("Lütfen boş kutucuk bırakmayınız!");
             }
@@ -92,7 +76,7 @@ namespace PlanlamaOyunu.Forms
                 }
                 urnlr.Clear();
                 urnlr = saticiSorgulari.urunlerim();
-                dataGridViewYeniUrunListele(urnlr);
+                dataGridViewUrunListele(urnlr, dtGrdViewYeniUrun);
             }
         }
 
