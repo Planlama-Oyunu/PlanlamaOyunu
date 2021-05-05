@@ -31,18 +31,20 @@ namespace PlanlamaOyunu.Forms
         {
             this.tabCntrlAliciFrm = new System.Windows.Forms.TabControl();
             this.tabPageUrunAlim = new System.Windows.Forms.TabPage();
+            this.lblUrunKgFiyati = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.dtGrdViewUrunler = new System.Windows.Forms.DataGridView();
             this.urunID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.urunAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.urunKg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.urunBirimFiyat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mvctBakiye1 = new System.Windows.Forms.Label();
+            this.lblBakiyeSatinAlma = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblOdenecekTutar = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBoxAlinacakMiktar = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSatinAl = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPageParaEkleme = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,7 +55,7 @@ namespace PlanlamaOyunu.Forms
             this.btnParaEkle = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_ekleBakiye = new System.Windows.Forms.TextBox();
-            this.mvctBakiye = new System.Windows.Forms.Label();
+            this.lblBakiyeParaEkleme = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageGecmisIslemler = new System.Windows.Forms.TabPage();
             this.dtGrdViewGecmisSiparisler = new System.Windows.Forms.DataGridView();
@@ -88,14 +90,16 @@ namespace PlanlamaOyunu.Forms
             // tabPageUrunAlim
             // 
             this.tabPageUrunAlim.AutoScroll = true;
+            this.tabPageUrunAlim.Controls.Add(this.lblUrunKgFiyati);
+            this.tabPageUrunAlim.Controls.Add(this.label10);
             this.tabPageUrunAlim.Controls.Add(this.dtGrdViewUrunler);
-            this.tabPageUrunAlim.Controls.Add(this.mvctBakiye1);
+            this.tabPageUrunAlim.Controls.Add(this.lblBakiyeSatinAlma);
             this.tabPageUrunAlim.Controls.Add(this.label9);
-            this.tabPageUrunAlim.Controls.Add(this.label8);
+            this.tabPageUrunAlim.Controls.Add(this.lblOdenecekTutar);
             this.tabPageUrunAlim.Controls.Add(this.label7);
-            this.tabPageUrunAlim.Controls.Add(this.textBox2);
+            this.tabPageUrunAlim.Controls.Add(this.txtBoxAlinacakMiktar);
             this.tabPageUrunAlim.Controls.Add(this.label6);
-            this.tabPageUrunAlim.Controls.Add(this.button1);
+            this.tabPageUrunAlim.Controls.Add(this.btnSatinAl);
             this.tabPageUrunAlim.Controls.Add(this.label5);
             this.tabPageUrunAlim.Location = new System.Drawing.Point(4, 22);
             this.tabPageUrunAlim.Name = "tabPageUrunAlim";
@@ -105,10 +109,33 @@ namespace PlanlamaOyunu.Forms
             this.tabPageUrunAlim.Text = "Ürün Satın Alma";
             this.tabPageUrunAlim.UseVisualStyleBackColor = true;
             // 
+            // lblUrunKgFiyati
+            // 
+            this.lblUrunKgFiyati.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUrunKgFiyati.AutoSize = true;
+            this.lblUrunKgFiyati.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUrunKgFiyati.Location = new System.Drawing.Point(973, 66);
+            this.lblUrunKgFiyati.Name = "lblUrunKgFiyati";
+            this.lblUrunKgFiyati.Size = new System.Drawing.Size(15, 17);
+            this.lblUrunKgFiyati.TabIndex = 11;
+            this.lblUrunKgFiyati.Text = "0";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(788, 66);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(100, 16);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Ürün Kg Fiyatı:";
+            // 
             // dtGrdViewUrunler
             // 
             this.dtGrdViewUrunler.AllowUserToAddRows = false;
             this.dtGrdViewUrunler.AllowUserToDeleteRows = false;
+            this.dtGrdViewUrunler.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdViewUrunler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdViewUrunler.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.urunID,
@@ -118,8 +145,10 @@ namespace PlanlamaOyunu.Forms
             this.dtGrdViewUrunler.Location = new System.Drawing.Point(11, 34);
             this.dtGrdViewUrunler.Name = "dtGrdViewUrunler";
             this.dtGrdViewUrunler.ReadOnly = true;
+            this.dtGrdViewUrunler.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGrdViewUrunler.Size = new System.Drawing.Size(771, 384);
             this.dtGrdViewUrunler.TabIndex = 9;
+            this.dtGrdViewUrunler.SelectionChanged += new System.EventHandler(this.dtGrdViewUrunler_SelectionChanged);
             // 
             // urunID
             // 
@@ -135,7 +164,7 @@ namespace PlanlamaOyunu.Forms
             // 
             // urunKg
             // 
-            this.urunKg.HeaderText = "Ürün Kg";
+            this.urunKg.HeaderText = "Stoktaki Ürün Miktarı (Kg)";
             this.urunKg.Name = "urunKg";
             this.urunKg.ReadOnly = true;
             // 
@@ -145,58 +174,62 @@ namespace PlanlamaOyunu.Forms
             this.urunBirimFiyat.Name = "urunBirimFiyat";
             this.urunBirimFiyat.ReadOnly = true;
             // 
-            // mvctBakiye1
+            // lblBakiyeSatinAlma
             // 
-            this.mvctBakiye1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.mvctBakiye1.AutoSize = true;
-            this.mvctBakiye1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.mvctBakiye1.Location = new System.Drawing.Point(1061, 3);
-            this.mvctBakiye1.Name = "mvctBakiye1";
-            this.mvctBakiye1.Size = new System.Drawing.Size(15, 16);
-            this.mvctBakiye1.TabIndex = 8;
-            this.mvctBakiye1.Text = "0";
+            this.lblBakiyeSatinAlma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBakiyeSatinAlma.AutoSize = true;
+            this.lblBakiyeSatinAlma.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblBakiyeSatinAlma.Location = new System.Drawing.Point(1036, 3);
+            this.lblBakiyeSatinAlma.Name = "lblBakiyeSatinAlma";
+            this.lblBakiyeSatinAlma.Size = new System.Drawing.Size(31, 16);
+            this.lblBakiyeSatinAlma.TabIndex = 8;
+            this.lblBakiyeSatinAlma.Text = "0 TL";
             // 
             // label9
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(985, 3);
+            this.label9.Location = new System.Drawing.Point(973, 3);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 16);
             this.label9.TabIndex = 7;
             this.label9.Text = "Bakiye:";
             // 
-            // label8
+            // lblOdenecekTutar
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(973, 62);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 16);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "0";
+            this.lblOdenecekTutar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblOdenecekTutar.AutoSize = true;
+            this.lblOdenecekTutar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOdenecekTutar.Location = new System.Drawing.Point(973, 97);
+            this.lblOdenecekTutar.Name = "lblOdenecekTutar";
+            this.lblOdenecekTutar.Size = new System.Drawing.Size(15, 17);
+            this.lblOdenecekTutar.TabIndex = 6;
+            this.lblOdenecekTutar.Text = "0";
             // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(788, 62);
+            this.label7.Location = new System.Drawing.Point(788, 97);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(116, 16);
             this.label7.TabIndex = 5;
             this.label7.Text = "Ödenecek Tutar:";
             // 
-            // textBox2
+            // txtBoxAlinacakMiktar
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(976, 33);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.Text = "0";
+            this.txtBoxAlinacakMiktar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxAlinacakMiktar.Location = new System.Drawing.Point(976, 33);
+            this.txtBoxAlinacakMiktar.Name = "txtBoxAlinacakMiktar";
+            this.txtBoxAlinacakMiktar.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxAlinacakMiktar.TabIndex = 4;
+            this.txtBoxAlinacakMiktar.Text = "0";
+            this.txtBoxAlinacakMiktar.TextChanged += new System.EventHandler(this.txtBoxAlinacakMiktar_TextChanged);
+            this.txtBoxAlinacakMiktar.Enter += new System.EventHandler(this.txtBox_Enter);
+            this.txtBoxAlinacakMiktar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyFloatValue);
+            this.txtBoxAlinacakMiktar.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // label6
             // 
@@ -205,20 +238,20 @@ namespace PlanlamaOyunu.Forms
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
             this.label6.Location = new System.Drawing.Point(788, 34);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(182, 16);
+            this.label6.Size = new System.Drawing.Size(184, 16);
             this.label6.TabIndex = 3;
-            this.label6.Text = "Alınacak ürün miktarı(KG):";
+            this.label6.Text = "Alınacak ürün miktarı (Kg):";
             // 
-            // button1
+            // btnSatinAl
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(976, 90);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Satın Al";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSatinAl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSatinAl.Location = new System.Drawing.Point(976, 125);
+            this.btnSatinAl.Name = "btnSatinAl";
+            this.btnSatinAl.Size = new System.Drawing.Size(100, 23);
+            this.btnSatinAl.TabIndex = 2;
+            this.btnSatinAl.Text = "Satın Al";
+            this.btnSatinAl.UseVisualStyleBackColor = true;
+            this.btnSatinAl.Click += new System.EventHandler(this.btnSatinAl_Click);
             // 
             // label5
             // 
@@ -237,7 +270,7 @@ namespace PlanlamaOyunu.Forms
             this.tabPageParaEkleme.Controls.Add(this.btnParaEkle);
             this.tabPageParaEkleme.Controls.Add(this.label3);
             this.tabPageParaEkleme.Controls.Add(this.txt_ekleBakiye);
-            this.tabPageParaEkleme.Controls.Add(this.mvctBakiye);
+            this.tabPageParaEkleme.Controls.Add(this.lblBakiyeParaEkleme);
             this.tabPageParaEkleme.Controls.Add(this.label1);
             this.tabPageParaEkleme.Location = new System.Drawing.Point(4, 22);
             this.tabPageParaEkleme.Name = "tabPageParaEkleme";
@@ -316,15 +349,19 @@ namespace PlanlamaOyunu.Forms
             this.txt_ekleBakiye.Name = "txt_ekleBakiye";
             this.txt_ekleBakiye.Size = new System.Drawing.Size(100, 20);
             this.txt_ekleBakiye.TabIndex = 2;
+            this.txt_ekleBakiye.Text = "0";
+            this.txt_ekleBakiye.Enter += new System.EventHandler(this.txtBox_Enter);
+            this.txt_ekleBakiye.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyFloatValue);
+            this.txt_ekleBakiye.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
-            // mvctBakiye
+            // lblBakiyeParaEkleme
             // 
-            this.mvctBakiye.AutoSize = true;
-            this.mvctBakiye.Location = new System.Drawing.Point(240, 63);
-            this.mvctBakiye.Name = "mvctBakiye";
-            this.mvctBakiye.Size = new System.Drawing.Size(13, 13);
-            this.mvctBakiye.TabIndex = 1;
-            this.mvctBakiye.Text = "0";
+            this.lblBakiyeParaEkleme.AutoSize = true;
+            this.lblBakiyeParaEkleme.Location = new System.Drawing.Point(240, 63);
+            this.lblBakiyeParaEkleme.Name = "lblBakiyeParaEkleme";
+            this.lblBakiyeParaEkleme.Size = new System.Drawing.Size(13, 13);
+            this.lblBakiyeParaEkleme.TabIndex = 1;
+            this.lblBakiyeParaEkleme.Text = "0";
             // 
             // label1
             // 
@@ -440,20 +477,20 @@ namespace PlanlamaOyunu.Forms
         private System.Windows.Forms.TabPage tabPageUrunAlim;
         private System.Windows.Forms.TabPage tabPageParaEkleme;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label mvctBakiye;
+        private System.Windows.Forms.Label lblBakiyeParaEkleme;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_ekleBakiye;
         private System.Windows.Forms.Button btnParaEkle;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dtGrdViewBakiyeOnay;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSatinAl;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBoxAlinacakMiktar;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblOdenecekTutar;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label mvctBakiye1;
+        private System.Windows.Forms.Label lblBakiyeSatinAlma;
         private System.Windows.Forms.TabPage tabPageGecmisIslemler;
         private System.Windows.Forms.DataGridView dtGrdViewGecmisSiparisler;
         private System.Windows.Forms.DataGridView dtGrdViewUrunler;
@@ -464,12 +501,14 @@ namespace PlanlamaOyunu.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn islemTutari;
         private System.Windows.Forms.DataGridViewTextBoxColumn alicininKalanParasi;
         private System.Windows.Forms.DataGridViewTextBoxColumn urunBirimFiyati;
+        private System.Windows.Forms.DataGridViewTextBoxColumn talepID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn talepTarihi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn talepMiktari;
+        private System.Windows.Forms.Label lblUrunKgFiyati;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridViewTextBoxColumn urunID;
         private System.Windows.Forms.DataGridViewTextBoxColumn urunAdi;
         private System.Windows.Forms.DataGridViewTextBoxColumn urunKg;
         private System.Windows.Forms.DataGridViewTextBoxColumn urunBirimFiyat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn talepID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn talepTarihi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn talepMiktari;
     }
 }

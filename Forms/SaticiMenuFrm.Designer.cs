@@ -33,7 +33,18 @@ namespace PlanlamaOyunu.Forms
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.dtGrdViewUrunlerim = new System.Windows.Forms.DataGridView();
+            this.urunId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.urunAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.urunKg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.urunKgFiyat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.urunOnay = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dtGrdViewYeniUrun = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cmbBoxUrunIsmi = new System.Windows.Forms.ComboBox();
             this.btnUrunEkle = new System.Windows.Forms.Button();
             this.txtBoxUrunKgFiyat = new System.Windows.Forms.TextBox();
@@ -44,17 +55,6 @@ namespace PlanlamaOyunu.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dtGrdViewSiparisler = new System.Windows.Forms.DataGridView();
-            this.dtGrdViewYeniUrun = new System.Windows.Forms.DataGridView();
-            this.urunId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.urunAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.urunKg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.urunKgFiyat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.urunOnay = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.siparisId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aliciAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.islemTarihi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,9 +65,9 @@ namespace PlanlamaOyunu.Forms
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewUrunlerim)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewYeniUrun)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewSiparisler)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewYeniUrun)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -123,6 +123,38 @@ namespace PlanlamaOyunu.Forms
             this.dtGrdViewUrunlerim.Size = new System.Drawing.Size(813, 372);
             this.dtGrdViewUrunlerim.TabIndex = 0;
             // 
+            // urunId
+            // 
+            this.urunId.HeaderText = "Ürün ID";
+            this.urunId.Name = "urunId";
+            this.urunId.ReadOnly = true;
+            // 
+            // urunAdi
+            // 
+            this.urunAdi.HeaderText = "Ürün Adı";
+            this.urunAdi.Name = "urunAdi";
+            this.urunAdi.ReadOnly = true;
+            // 
+            // urunKg
+            // 
+            this.urunKg.HeaderText = "Ürün Kg";
+            this.urunKg.Name = "urunKg";
+            this.urunKg.ReadOnly = true;
+            // 
+            // urunKgFiyat
+            // 
+            this.urunKgFiyat.HeaderText = "Ürün Kg Fiyatı(TL)";
+            this.urunKgFiyat.Name = "urunKgFiyat";
+            this.urunKgFiyat.ReadOnly = true;
+            // 
+            // urunOnay
+            // 
+            this.urunOnay.HeaderText = "Ürün Onayı";
+            this.urunOnay.Name = "urunOnay";
+            this.urunOnay.ReadOnly = true;
+            this.urunOnay.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.urunOnay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dtGrdViewYeniUrun);
@@ -141,6 +173,58 @@ namespace PlanlamaOyunu.Forms
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Yeni Ürün";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dtGrdViewYeniUrun
+            // 
+            this.dtGrdViewYeniUrun.AllowUserToAddRows = false;
+            this.dtGrdViewYeniUrun.AllowUserToDeleteRows = false;
+            this.dtGrdViewYeniUrun.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtGrdViewYeniUrun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGrdViewYeniUrun.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewCheckBoxColumn1});
+            this.dtGrdViewYeniUrun.Location = new System.Drawing.Point(0, 90);
+            this.dtGrdViewYeniUrun.MultiSelect = false;
+            this.dtGrdViewYeniUrun.Name = "dtGrdViewYeniUrun";
+            this.dtGrdViewYeniUrun.ReadOnly = true;
+            this.dtGrdViewYeniUrun.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGrdViewYeniUrun.Size = new System.Drawing.Size(819, 323);
+            this.dtGrdViewYeniUrun.TabIndex = 9;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Ürün ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Ürün Adı";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Ürün Kg";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Ürün Kg Fiyatı(TL)";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Ürün Onayı";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // cmbBoxUrunIsmi
             // 
@@ -176,6 +260,9 @@ namespace PlanlamaOyunu.Forms
             this.txtBoxUrunKgFiyat.Name = "txtBoxUrunKgFiyat";
             this.txtBoxUrunKgFiyat.Size = new System.Drawing.Size(100, 20);
             this.txtBoxUrunKgFiyat.TabIndex = 5;
+            this.txtBoxUrunKgFiyat.Enter += new System.EventHandler(this.txtBox_Enter);
+            this.txtBoxUrunKgFiyat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyFloatValue);
+            this.txtBoxUrunKgFiyat.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // txtBoxUrunKilo
             // 
@@ -183,6 +270,9 @@ namespace PlanlamaOyunu.Forms
             this.txtBoxUrunKilo.Name = "txtBoxUrunKilo";
             this.txtBoxUrunKilo.Size = new System.Drawing.Size(100, 20);
             this.txtBoxUrunKilo.TabIndex = 4;
+            this.txtBoxUrunKilo.Enter += new System.EventHandler(this.txtBox_Enter);
+            this.txtBoxUrunKilo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyFloatValue);
+            this.txtBoxUrunKilo.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // txtBoxUrunIsmi
             // 
@@ -249,90 +339,6 @@ namespace PlanlamaOyunu.Forms
             this.dtGrdViewSiparisler.Size = new System.Drawing.Size(813, 407);
             this.dtGrdViewSiparisler.TabIndex = 1;
             // 
-            // dtGrdViewYeniUrun
-            // 
-            this.dtGrdViewYeniUrun.AllowUserToAddRows = false;
-            this.dtGrdViewYeniUrun.AllowUserToDeleteRows = false;
-            this.dtGrdViewYeniUrun.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtGrdViewYeniUrun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGrdViewYeniUrun.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewCheckBoxColumn1});
-            this.dtGrdViewYeniUrun.Location = new System.Drawing.Point(0, 90);
-            this.dtGrdViewYeniUrun.MultiSelect = false;
-            this.dtGrdViewYeniUrun.Name = "dtGrdViewYeniUrun";
-            this.dtGrdViewYeniUrun.ReadOnly = true;
-            this.dtGrdViewYeniUrun.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGrdViewYeniUrun.Size = new System.Drawing.Size(819, 323);
-            this.dtGrdViewYeniUrun.TabIndex = 9;
-            // 
-            // urunId
-            // 
-            this.urunId.HeaderText = "Ürün ID";
-            this.urunId.Name = "urunId";
-            this.urunId.ReadOnly = true;
-            // 
-            // urunAdi
-            // 
-            this.urunAdi.HeaderText = "Ürün Adı";
-            this.urunAdi.Name = "urunAdi";
-            this.urunAdi.ReadOnly = true;
-            // 
-            // urunKg
-            // 
-            this.urunKg.HeaderText = "Ürün Kg";
-            this.urunKg.Name = "urunKg";
-            this.urunKg.ReadOnly = true;
-            // 
-            // urunKgFiyat
-            // 
-            this.urunKgFiyat.HeaderText = "Ürün Kg Fiyatı(TL)";
-            this.urunKgFiyat.Name = "urunKgFiyat";
-            this.urunKgFiyat.ReadOnly = true;
-            // 
-            // urunOnay
-            // 
-            this.urunOnay.HeaderText = "Ürün Onayı";
-            this.urunOnay.Name = "urunOnay";
-            this.urunOnay.ReadOnly = true;
-            this.urunOnay.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.urunOnay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Ürün ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Ürün Adı";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Ürün Kg";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Ürün Kg Fiyatı(TL)";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Ürün Onayı";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // siparisId
             // 
             this.siparisId.HeaderText = "Sipariş ID";
@@ -383,9 +389,9 @@ namespace PlanlamaOyunu.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewUrunlerim)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewYeniUrun)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewSiparisler)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewYeniUrun)).EndInit();
             this.ResumeLayout(false);
 
         }

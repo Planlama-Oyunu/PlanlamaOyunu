@@ -1,4 +1,5 @@
 ﻿using PlanlamaOyunu.Entitys;
+using PlanlamaOyunu.Functions;
 using PlanlamaOyunu.SqlQuerys;
 using System;
 using System.Collections.Generic;
@@ -19,25 +20,12 @@ namespace PlanlamaOyunu.Forms
             InitializeComponent();
         }
         SaticiSorgulari saticiSorgulari = new SaticiSorgulari();
+        TextBoxKisitlama tbk = new TextBoxKisitlama();
         List<Urun> urnlr = new List<Urun>();
         List<SatinAlim> sprslr = new List<SatinAlim>();
 
         private void SaticiMenuFrm_Load(object sender, EventArgs e)
         {
-            /*dtGrdViewYeniUrun.ColumnCount = 5;
-            dtGrdViewYeniUrun.Columns[0].Name = "Ürün ID";
-            dtGrdViewYeniUrun.Columns[1].Name = "Ürün adı";
-            dtGrdViewYeniUrun.Columns[2].Name = "Ürün KG";
-            dtGrdViewYeniUrun.Columns[3].Name = "Ürün Kg Fiyatı(TL)";
-            dtGrdViewYeniUrun.Columns[4].Name = "Ürün Onayı";
-
-            dtGrdViewUrunlerim.ColumnCount = 5;
-            dtGrdViewUrunlerim.Columns[0].Name = "Ürün ID";
-            dtGrdViewUrunlerim.Columns[1].Name = "Ürün adı";
-            dtGrdViewUrunlerim.Columns[2].Name = "Ürün KG";
-            dtGrdViewUrunlerim.Columns[3].Name = "Ürün Kg Fiyatı(TL)";
-            dtGrdViewUrunlerim.Columns[4].Name = "Ürün Onayı";*/
-
             urnlr = saticiSorgulari.urunlerim();
             dataGridViewUrunListele(urnlr, dtGrdViewYeniUrun);
             urnlr.Clear();
@@ -46,7 +34,18 @@ namespace PlanlamaOyunu.Forms
             sprslr = saticiSorgulari.siparisler();
             dataGridViewSiparisListele(sprslr, dtGrdViewSiparisler);
         }
-
+        private void txtBox_Enter(object sender, EventArgs e)
+        {
+            tbk.txtBox_Enter(sender, e);
+        }
+        private void txtBox_Leave(object sender, EventArgs e)
+        {
+            tbk.txtBox_Leave(sender, e);
+        }
+        public void onlyFloatValue(object sender, KeyPressEventArgs e)
+        {
+            tbk.onlyFloatValue(sender, e);
+        }
         public void dataGridViewUrunListele(List<Urun> urnlr, DataGridView dgv)
         {
             dgv.Rows.Clear();

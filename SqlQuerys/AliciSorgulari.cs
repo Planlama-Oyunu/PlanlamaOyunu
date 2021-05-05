@@ -70,7 +70,7 @@ namespace PlanlamaOyunu.SqlQuerys
             }
         }
 
-        public string bakiyeSorgulama()
+        public double bakiyeSorgulama()
         {
             try
             {
@@ -79,7 +79,7 @@ namespace PlanlamaOyunu.SqlQuerys
                 komut.Parameters.AddWithValue("kullaniciId", Properties.Settings.Default.kullaniciID);
                 SqlDataReader read = komut.ExecuteReader();//sorgudan dönen değerleri okuyor
                 read.Read();
-                string bky = Convert.ToString(read["bakiye"]);
+                double bky = Convert.ToDouble(read["bakiye"]);
                 baglanti.Close();
                 return bky;
             }
@@ -134,6 +134,40 @@ namespace PlanlamaOyunu.SqlQuerys
                 }
                 baglanti.Close();
                 return sprslr;
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.ToString(), "UYARI!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
+        public void satinAlim(int urunId, double tutar, double alinanUrunMiktari)
+        {
+            try
+            {
+                baglanti.Open();//veritabanı ile olan bağlantıyı açıyor
+                SqlCommand komut = new SqlCommand("UPDATE tblUrun SET urunKg = " +
+                    "((SELECT urunKg FROM tblUrun WHERE urunID = @urunId)-@alinanUrunMiktari) where urunID = @urunId", baglanti);//sorgumuz
+                komut.Parameters.AddWithValue("@urunId", urunId);
+                komut.Parameters.AddWithValue("@alinanUrunMiktari", alinanUrunMiktari);
+                komut.ExecuteNonQuery();
+
+                komut = new SqlCommand("UPDATE tblKullanici SET bakiye = " +
+                    "((SELECT bakiye FROM tblKullanici WHERE kullaniciID = @kullaniciId)-@urunTutar) where kullaniciID = @kullaniciId", baglanti);//sorgumuz
+                komut.Parameters.AddWithValue("@kullaniciId", Properties.Settings.Default.kullaniciID);
+                komut.Parameters.AddWithValue("@urunTutar", tutar);
+                komut.ExecuteNonQuery();
+
+                komut = new SqlCommand("UPDATE tblKullanici SET bakiye = " +
+                    "((SELECT bakiye FROM tblKullanici WHERE kullaniciID = (select kullaniciID From tblUrun where urunID = @urunId))+@urunTutar) " +
+                    "where kullaniciID = (select kullaniciID From tblUrun where urunID = @urunId)", baglanti);//sorgumuz
+                komut.Parameters.AddWithValue("@urunId", urunId);
+                komut.Parameters.AddWithValue("@urunTutar", tutar);
+                komut.ExecuteNonQuery();
+
+                MessageBox.Show("Satın alma başarıyla gerçekleşmiştir.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                baglanti.Close();
             }
             catch (System.Exception ex)
             {
