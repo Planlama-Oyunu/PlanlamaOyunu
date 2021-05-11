@@ -29,6 +29,8 @@ namespace PlanlamaOyunu.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AliciMenuFrm));
             this.tabCntrlAliciFrm = new System.Windows.Forms.TabControl();
             this.tabPageUrunAlim = new System.Windows.Forms.TabPage();
             this.lblUrunKgFiyati = new System.Windows.Forms.Label();
@@ -66,6 +68,8 @@ namespace PlanlamaOyunu.Forms
             this.islemTutari = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.alicininKalanParasi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.urunBirimFiyati = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnUrunListeYenile = new System.Windows.Forms.Button();
+            this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabCntrlAliciFrm.SuspendLayout();
             this.tabPageUrunAlim.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewUrunler)).BeginInit();
@@ -90,6 +94,7 @@ namespace PlanlamaOyunu.Forms
             // tabPageUrunAlim
             // 
             this.tabPageUrunAlim.AutoScroll = true;
+            this.tabPageUrunAlim.Controls.Add(this.btnUrunListeYenile);
             this.tabPageUrunAlim.Controls.Add(this.lblUrunKgFiyati);
             this.tabPageUrunAlim.Controls.Add(this.label10);
             this.tabPageUrunAlim.Controls.Add(this.dtGrdViewUrunler);
@@ -179,7 +184,7 @@ namespace PlanlamaOyunu.Forms
             this.lblBakiyeSatinAlma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBakiyeSatinAlma.AutoSize = true;
             this.lblBakiyeSatinAlma.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblBakiyeSatinAlma.Location = new System.Drawing.Point(1036, 3);
+            this.lblBakiyeSatinAlma.Location = new System.Drawing.Point(851, 3);
             this.lblBakiyeSatinAlma.Name = "lblBakiyeSatinAlma";
             this.lblBakiyeSatinAlma.Size = new System.Drawing.Size(31, 16);
             this.lblBakiyeSatinAlma.TabIndex = 8;
@@ -190,7 +195,7 @@ namespace PlanlamaOyunu.Forms
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(973, 3);
+            this.label9.Location = new System.Drawing.Point(788, 3);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 16);
             this.label9.TabIndex = 7;
@@ -388,6 +393,7 @@ namespace PlanlamaOyunu.Forms
             // 
             this.dtGrdViewGecmisSiparisler.AllowUserToAddRows = false;
             this.dtGrdViewGecmisSiparisler.AllowUserToDeleteRows = false;
+            this.dtGrdViewGecmisSiparisler.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdViewGecmisSiparisler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdViewGecmisSiparisler.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.siparisId,
@@ -447,7 +453,27 @@ namespace PlanlamaOyunu.Forms
             this.urunBirimFiyati.HeaderText = "Ürün kg fiyatı (TL)";
             this.urunBirimFiyati.Name = "urunBirimFiyati";
             this.urunBirimFiyati.ReadOnly = true;
-            this.urunBirimFiyati.Width = 120;
+            // 
+            // btnUrunListeYenile
+            // 
+            this.btnUrunListeYenile.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUrunListeYenile.ImageKey = "synchronize_96px(mavi).png";
+            this.btnUrunListeYenile.ImageList = this.ımageList1;
+            this.btnUrunListeYenile.Location = new System.Drawing.Point(746, 3);
+            this.btnUrunListeYenile.Name = "btnUrunListeYenile";
+            this.btnUrunListeYenile.Size = new System.Drawing.Size(36, 29);
+            this.btnUrunListeYenile.TabIndex = 12;
+            this.btnUrunListeYenile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUrunListeYenile.UseVisualStyleBackColor = true;
+            this.btnUrunListeYenile.Click += new System.EventHandler(this.btnUrunListeYenile_Click);
+            // 
+            // ımageList1
+            // 
+            this.ımageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ımageList1.ImageStream")));
+            this.ımageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.ımageList1.Images.SetKeyName(0, "synchronize_96px(mavi).png");
+            this.ımageList1.Images.SetKeyName(1, "checkmark_96px.png");
+            this.ımageList1.Images.SetKeyName(2, "delete_96px.png");
             // 
             // AliciMenuFrm
             // 
@@ -510,5 +536,7 @@ namespace PlanlamaOyunu.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn urunAdi;
         private System.Windows.Forms.DataGridViewTextBoxColumn urunKg;
         private System.Windows.Forms.DataGridViewTextBoxColumn urunBirimFiyat;
+        private System.Windows.Forms.Button btnUrunListeYenile;
+        private System.Windows.Forms.ImageList ımageList1;
     }
 }

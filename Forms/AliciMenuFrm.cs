@@ -53,6 +53,11 @@ namespace PlanlamaOyunu.Forms
         /*
          * ÜRÜN SATIN ALMA
          */
+        private void btnUrunListeYenile_Click(object sender, EventArgs e)
+        {
+            urnlr = aliciSorgulari.urunler();
+            dataGridViewUrunListele(urnlr, dtGrdViewUrunler);
+        }
         private void dataGridViewUrunListele(List<Urun> urnlr, DataGridView dgv)
         {
             dgv.Rows.Clear();
@@ -93,7 +98,13 @@ namespace PlanlamaOyunu.Forms
             double stok = Convert.ToDouble(dtGrdViewUrunler.SelectedRows[0].Cells["urunKg"].Value);
             if (stok >= Convert.ToDouble(txtBoxAlinacakMiktar.Text) && Convert.ToDouble(txtBoxAlinacakMiktar.Text) > 0)
             {
-                aliciSorgulari.satinAlim(selectedUrn.urunID, tutar, Convert.ToDouble(txtBoxAlinacakMiktar.Text));
+                aliciSorgulari.satinAlim(selectedUrn.urunID, tutar, Convert.ToDouble(txtBoxAlinacakMiktar.Text), selectedUrn.urunFiyati);
+                lblBakiyeParaEkleme.Text = (Convert.ToDouble(lblBakiyeParaEkleme.Text.Split(' ')[0]) - tutar).ToString() + " TL";
+                lblBakiyeSatinAlma.Text = (Convert.ToDouble(lblBakiyeSatinAlma.Text.Split(' ')[0]) - tutar).ToString() + " TL";
+                urnlr = aliciSorgulari.urunler();
+                dataGridViewUrunListele(urnlr, dtGrdViewUrunler);
+                sprslr = aliciSorgulari.gecmisSiparisler();
+                dataGridViewSiparisListele(sprslr, dtGrdViewGecmisSiparisler);
             }
             else
             {
@@ -146,6 +157,6 @@ namespace PlanlamaOyunu.Forms
             }
         }
 
-
+        
     }
 }

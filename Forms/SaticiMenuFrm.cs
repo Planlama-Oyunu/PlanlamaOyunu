@@ -23,6 +23,7 @@ namespace PlanlamaOyunu.Forms
         TextBoxKisitlama tbk = new TextBoxKisitlama();
         List<Urun> urnlr = new List<Urun>();
         List<SatinAlim> sprslr = new List<SatinAlim>();
+        Urun selectedUrn = new Urun();
 
         private void SaticiMenuFrm_Load(object sender, EventArgs e)
         {
@@ -105,6 +106,34 @@ namespace PlanlamaOyunu.Forms
             else
             {
                 txtBoxUrunIsmi.Visible = false;
+            }
+        }
+
+        private void btnSiparisListeYenile_Click(object sender, EventArgs e)
+        {
+            sprslr = saticiSorgulari.siparisler();
+            dataGridViewSiparisListele(sprslr, dtGrdViewSiparisler);
+        }
+
+        private void btnUrunKaldir_Click(object sender, EventArgs e)
+        {
+            saticiSorgulari.UrunKaldir(selectedUrn.urunID);
+            urnlr.Clear();
+            urnlr = saticiSorgulari.urunlerim();
+            dataGridViewUrunListele(urnlr, dtGrdViewYeniUrun);
+            urnlr.Clear();
+            urnlr = saticiSorgulari.onayliUrunlerim();
+            dataGridViewUrunListele(urnlr, dtGrdViewUrunlerim);
+        }
+
+        private void dtGrdViewUrunlerim_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dtGrdViewUrunlerim.SelectedRows.Count > 0)
+            {
+                if (dtGrdViewUrunlerim.CurrentRow.Cells[0].Value != null)
+                {
+                    selectedUrn.urunID = Convert.ToInt32(dtGrdViewUrunlerim.SelectedRows[0].Cells["urunId"].Value);
+                }
             }
         }
     }

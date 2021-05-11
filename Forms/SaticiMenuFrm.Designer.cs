@@ -29,9 +29,11 @@ namespace PlanlamaOyunu.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaticiMenuFrm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnUrunKaldir = new System.Windows.Forms.Button();
             this.dtGrdViewUrunlerim = new System.Windows.Forms.DataGridView();
             this.urunId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.urunAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +63,8 @@ namespace PlanlamaOyunu.Forms
             this.islemDetay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.islemTutari = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.urunBirimFiyati = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSiparisListeYenile = new System.Windows.Forms.Button();
+            this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdViewUrunlerim)).BeginInit();
@@ -84,7 +88,7 @@ namespace PlanlamaOyunu.Forms
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.btnUrunKaldir);
             this.tabPage1.Controls.Add(this.dtGrdViewUrunlerim);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -94,14 +98,15 @@ namespace PlanlamaOyunu.Forms
             this.tabPage1.Text = "Ürünlerim";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnUrunKaldir
             // 
-            this.button1.Location = new System.Drawing.Point(736, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Ürünü Kaldır";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnUrunKaldir.Location = new System.Drawing.Point(736, 6);
+            this.btnUrunKaldir.Name = "btnUrunKaldir";
+            this.btnUrunKaldir.Size = new System.Drawing.Size(75, 23);
+            this.btnUrunKaldir.TabIndex = 1;
+            this.btnUrunKaldir.Text = "Ürünü Kaldır";
+            this.btnUrunKaldir.UseVisualStyleBackColor = true;
+            this.btnUrunKaldir.Click += new System.EventHandler(this.btnUrunKaldir_Click);
             // 
             // dtGrdViewUrunlerim
             // 
@@ -122,6 +127,7 @@ namespace PlanlamaOyunu.Forms
             this.dtGrdViewUrunlerim.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGrdViewUrunlerim.Size = new System.Drawing.Size(813, 372);
             this.dtGrdViewUrunlerim.TabIndex = 0;
+            this.dtGrdViewUrunlerim.SelectionChanged += new System.EventHandler(this.dtGrdViewUrunlerim_SelectionChanged);
             // 
             // urunId
             // 
@@ -310,6 +316,7 @@ namespace PlanlamaOyunu.Forms
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnSiparisListeYenile);
             this.tabPage3.Controls.Add(this.dtGrdViewSiparisler);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -332,11 +339,10 @@ namespace PlanlamaOyunu.Forms
             this.islemDetay,
             this.islemTutari,
             this.urunBirimFiyati});
-            this.dtGrdViewSiparisler.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtGrdViewSiparisler.Location = new System.Drawing.Point(3, 3);
+            this.dtGrdViewSiparisler.Location = new System.Drawing.Point(3, 41);
             this.dtGrdViewSiparisler.Name = "dtGrdViewSiparisler";
             this.dtGrdViewSiparisler.ReadOnly = true;
-            this.dtGrdViewSiparisler.Size = new System.Drawing.Size(813, 407);
+            this.dtGrdViewSiparisler.Size = new System.Drawing.Size(813, 369);
             this.dtGrdViewSiparisler.TabIndex = 1;
             // 
             // siparisId
@@ -375,6 +381,27 @@ namespace PlanlamaOyunu.Forms
             this.urunBirimFiyati.Name = "urunBirimFiyati";
             this.urunBirimFiyati.ReadOnly = true;
             // 
+            // btnSiparisListeYenile
+            // 
+            this.btnSiparisListeYenile.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSiparisListeYenile.ImageKey = "synchronize_96px(mavi).png";
+            this.btnSiparisListeYenile.ImageList = this.ımageList1;
+            this.btnSiparisListeYenile.Location = new System.Drawing.Point(3, 6);
+            this.btnSiparisListeYenile.Name = "btnSiparisListeYenile";
+            this.btnSiparisListeYenile.Size = new System.Drawing.Size(36, 29);
+            this.btnSiparisListeYenile.TabIndex = 13;
+            this.btnSiparisListeYenile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSiparisListeYenile.UseVisualStyleBackColor = true;
+            this.btnSiparisListeYenile.Click += new System.EventHandler(this.btnSiparisListeYenile_Click);
+            // 
+            // ımageList1
+            // 
+            this.ımageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ımageList1.ImageStream")));
+            this.ımageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.ımageList1.Images.SetKeyName(0, "synchronize_96px(mavi).png");
+            this.ımageList1.Images.SetKeyName(1, "checkmark_96px.png");
+            this.ımageList1.Images.SetKeyName(2, "delete_96px.png");
+            // 
             // SaticiMenuFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,7 +439,7 @@ namespace PlanlamaOyunu.Forms
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.DataGridView dtGrdViewSiparisler;
         private System.Windows.Forms.ComboBox cmbBoxUrunIsmi;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUrunKaldir;
         private System.Windows.Forms.DataGridView dtGrdViewYeniUrun;
         private System.Windows.Forms.DataGridViewTextBoxColumn urunId;
         private System.Windows.Forms.DataGridViewTextBoxColumn urunAdi;
@@ -430,5 +457,7 @@ namespace PlanlamaOyunu.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn islemDetay;
         private System.Windows.Forms.DataGridViewTextBoxColumn islemTutari;
         private System.Windows.Forms.DataGridViewTextBoxColumn urunBirimFiyati;
+        private System.Windows.Forms.Button btnSiparisListeYenile;
+        private System.Windows.Forms.ImageList ımageList1;
     }
 }

@@ -142,7 +142,7 @@ namespace PlanlamaOyunu.SqlQuerys
             }
         }
 
-        public void satinAlim(int urunId, double tutar, double alinanUrunMiktari)
+        public void satinAlim(int urunId, double tutar, double alinanUrunMiktari, double urunBirimFiyati)
         {
             try
             {
@@ -164,6 +164,22 @@ namespace PlanlamaOyunu.SqlQuerys
                     "where kullaniciID = (select kullaniciID From tblUrun where urunID = @urunId)", baglanti);//sorgumuz
                 komut.Parameters.AddWithValue("@urunId", urunId);
                 komut.Parameters.AddWithValue("@urunTutar", tutar);
+                komut.ExecuteNonQuery();
+
+                komut = new SqlCommand("INSERT tblSatinAlim (aliciID,saticiID,islemTarihi,islemDetay,islemTutari,alicininKalanParasi,urunBirimFiyati) VALUES " +
+                    "(@aliciId, " +
+                    "(select kullaniciID From tblUrun where urunID = @urunId), " +
+                    "GETDATE(), " +
+                    "((select kullaniciAdi From tblKullanici where kullaniciID = @aliciId) + ', ' + (SELECT kullaniciAdi FROM tblKullanici WHERE kullaniciID = (select kullaniciID From tblUrun where urunID = @urunId)) +' isimli kullanıcıdan ' + @alinanUrunMiktari + 'Kg ' + (select urunAdi from tblUrun where urunID = @urunId) +' almıştır. İşlem tutarı ' + @islemTutariString + 'TL dir.'), " +
+                    "@islemTutari, " +
+                    "(SELECT bakiye FROM tblKullanici WHERE kullaniciID = @aliciId), " +
+                    "@urunBirimFiyati)", baglanti);
+                komut.Parameters.AddWithValue("@aliciId", Properties.Settings.Default.kullaniciID);
+                komut.Parameters.AddWithValue("@urunId", urunId);
+                komut.Parameters.AddWithValue("@islemTutari", tutar);
+                komut.Parameters.AddWithValue("@islemTutariString", tutar.ToString());
+                komut.Parameters.AddWithValue("@alinanUrunMiktari", alinanUrunMiktari.ToString());
+                komut.Parameters.AddWithValue("@urunBirimFiyati", urunBirimFiyati);
                 komut.ExecuteNonQuery();
 
                 MessageBox.Show("Satın alma başarıyla gerçekleşmiştir.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);

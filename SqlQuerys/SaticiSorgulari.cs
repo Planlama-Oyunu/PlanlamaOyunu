@@ -26,6 +26,15 @@ namespace PlanlamaOyunu.SqlQuerys
             baglanti.Close();
             MessageBox.Show("Kayıt Başarıyla Oluşturulmuştur.");
         }
+        public void UrunKaldir(int urunId)
+        {
+            baglanti.Open();
+            SqlCommand komut = new SqlCommand("Delete from tblUrun where urunID = @urunId", baglanti);
+            komut.Parameters.AddWithValue("@urunId", urunId);
+            komut.ExecuteNonQuery();
+            baglanti.Close();
+            MessageBox.Show("Ürün Silinmiştir.");
+        }
 
         public List<Urun> urunlerim()
         {
